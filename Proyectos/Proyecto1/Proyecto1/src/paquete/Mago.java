@@ -15,20 +15,20 @@ import javax.swing.ImageIcon;
 public class Mago {
     public int posicion=0;
     public int equipo=0;
-    public ImageIcon EquipoAzulM(int tamy){
+    public ImageIcon EquipoAzulM(int tamx,int tamy){
         
-       ImageIcon mazul =new ImageIcon(getClass().getResource("/imagenes/Guerrerab.png"));
+       ImageIcon mazul =new ImageIcon(getClass().getResource("/imagenes/Magob.png"));
        Image imagen= mazul.getImage();
-       Image tamimagen=imagen.getScaledInstance(150, tamy, Image.SCALE_SMOOTH);
+       Image tamimagen=imagen.getScaledInstance(tamx, tamy, Image.SCALE_SMOOTH);
        mazul= new ImageIcon(tamimagen);
      
        return mazul;
     }
-    public ImageIcon EquipoRojoM(int tamy){
+    public ImageIcon EquipoRojoM(int tamx, int tamy){
         
-       ImageIcon mrojo =new ImageIcon(getClass().getResource("/imagenes/Guerrerar.png"));
+       ImageIcon mrojo =new ImageIcon(getClass().getResource("/imagenes/Magor.png"));
        Image imagen= mrojo.getImage();
-       Image tamimagen=imagen.getScaledInstance(150, tamy, Image.SCALE_SMOOTH);
+       Image tamimagen=imagen.getScaledInstance(tamx, tamy, Image.SCALE_SMOOTH);
        mrojo= new ImageIcon(tamimagen);
      
        return mrojo;

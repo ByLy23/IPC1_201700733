@@ -9,11 +9,15 @@ package paquete;
  *
  * @author byron
  */
-public class Main {
-    public static void main(String[] args){
-        System.out.println("hola");
-        System.out.println("adios");
-        new Vista().setVisible(true);
+public class Dado {
+    private int cantidad=0;
+    public Dado(){
         
     }
+    public int tirarDado(){
+        int cant= (int)(Math.random()*6+1);
+        return cant;
+    }
+    
+    //Imagenes 
 }
