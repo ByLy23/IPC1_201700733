@@ -21,23 +21,33 @@ public class Tablero {
     public JLabel[][] matrizG;
     public int tambx=0;
     public int tamby=0;
+    public int rndx=0;
+    public int rndy=0;
     public Tablero(int tam, JPanel panel){
         this.tam=tam;
         this.fondo=panel;
         rellenar();
     }
+    public void posicionRandom(){
+        
+    }
+    public void colocarVidas(){
+        
+    }
     public void rellenar(){
         tambx= 600/tam;
         tamby= 450/tam;
+        rndx= (int)(Math.random()*tam);
+        rndy=(int)(Math.random()*tam);
         matrizL= new int[tam][tam];
         matrizG= new JLabel[tam][tam];
-        //1 persona, o casiilas vacias
-        matrizL[0][0]=1;
+        //1 persona, o casiilas vacias       
         mago= new Mago();
-        mago.posicion=0;
+        //mago.posicion=0;
         for (int i = 1; i < tam; i++) {
             for (int j = 0; j < tam; j++) {
                 matrizL[i][j]=0;
+                 matrizL[rndx][rndy]=1;
             }
         }
         repintar();

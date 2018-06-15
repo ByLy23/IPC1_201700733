@@ -21,6 +21,7 @@ public class Dado {
     private int cantidad=0;
     private JLabel labelG;
     private JPanel panel;
+    private int cant;
     public Dado(){
         
     }
@@ -28,12 +29,12 @@ public class Dado {
         this.panel=panel;
     }
     public int tirarDado(){
-        int cant= (int)(Math.random()*6+1);
+         cant= (int)(Math.random()*6+1);
         return cant;
     }
     public void pintar(int numero){
         JLabel cantdado;
-        switch(numero){
+        switch(cant){
             case 1:
                 cantdado= new JLabel(Dado1()); 
                 cantdado.setOpaque(false);

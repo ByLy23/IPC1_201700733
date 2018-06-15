@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args){
         System.out.println("hola");
         System.out.println("adios");
-        new Vista().setVisible(true);
+        new inicio().setVisible(true);
         
     }
 }
