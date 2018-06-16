@@ -34,7 +34,7 @@ public class Dado {
     }
     public void pintar(int numero){
         JLabel cantdado;
-        switch(cant){
+        switch(numero){
             case 1:
                 cantdado= new JLabel(Dado1()); 
                 cantdado.setOpaque(false);
