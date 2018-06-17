@@ -33,12 +33,18 @@ public class Tablero {
         this.fondo=panel;
         rellenar();
     }
+    public int rndx(){
+        
+        rndx= (int)(Math.random()*tam);
+        return rndx;
+    }
+    public int rndy(){
+     rndy=(int)(Math.random()*tam);
+     return rndy;
+    }
     public void rellenar(){
         tambx= 600/tam;
         tamby= 450/tam;
-        
-        rndx= (int)(Math.random()*tam);
-     rndy=(int)(Math.random()*tam);
         matrizL= new int[tam][tam];
         matrizG= new JLabel[tam][tam];
         //1 persona, o casiilas vacias       
@@ -47,16 +53,16 @@ public class Tablero {
         for (int i = 0; i < tam; i++) {
             for (int j = 0; j < tam; j++) {
                 matrizL[i][j]=0;
-                 matrizL[rndx][rndy]=1;
-                
+         
             }
         }
-        agregarCorazones();
+        agregarVidas();
         agregarBombas();
         repintar();
     }
     public void repintar(){
         JLabel casilla= null;
+        
         int cantVida= (int)(0.05*tam*tam);
         for (int i = 0; i < tam; i++) {
             for (int j = 0; j < tam; j++) {
@@ -80,30 +86,21 @@ public class Tablero {
             
         }
     }
-    public void agregarCorazones(){
-       int cantVida= (int)(0.05*tam*tam);
-        rndx= (int)(Math.random()*tam);
-     rndy=(int)(Math.random()*tam);
+    public void agregarVidas(){
+        int cantVida= (int)(0.05*tam*tam);
+        corazon= new Corazon();
         cantVidas= new int[cantVida];
-        for (int i = 0; i < cantVida; i++) {
-            corazon= new Corazon();
-            matrizL[rndx][rndy]=2;
-           // corazon= new Corazon[cantVida];
+                for (int k = 0; k < cantVida; k++) {
+            matrizL[rndx()][rndy()]=2;
+           
         }
-      /*  for (int i = 0; i < cantVidas; i++) {
-            for (int j = 0; j < cantVidas; j++) {
-                
-            }
-        }*/
     }
     public void agregarBombas(){
         int cantBomba= (int)(0.1*tam*tam);
-        rndx= (int)(Math.random()*tam);
-     rndy=(int)(Math.random()*tam);
         cantBombas= new int[cantBomba];
-        for (int i = 0; i < cantBomba; i++) {
-            matrizL[rndx][rndy]=3;
             bomba= new Bomba();
+        for (int i = 0; i < cantBomba; i++) {
+            matrizL[rndx()][rndy()]=3;
         }
     }
 }
