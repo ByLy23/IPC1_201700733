@@ -71,7 +71,7 @@ public class Tablero {
                     casilla= new JLabel(this.mago.EquipoRojoM(tambx,tamby));
                 }
                 casilla.setOpaque(false);
-                casilla.setBorder(BorderFactory.createLineBorder(new Color(78,125,0)));
+                casilla.setBorder(BorderFactory.createLineBorder(new Color(0,43,113)));
             casilla.setBounds(j*tambx, i*tamby, tambx, tamby);
             matrizG[i][j]= casilla;
             fondo.add(matrizG[i][j],BorderLayout.CENTER);
