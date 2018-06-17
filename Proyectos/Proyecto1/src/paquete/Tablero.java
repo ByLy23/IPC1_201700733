@@ -1,24 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package paquete;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.util.Arrays;
 import javax.swing.*;
 
-/**
- *
- * @author byron
- */
 public class Tablero {
     public int tam=0;
     public JPanel fondo=null;
     public int[][] matrizL;
     public Mago mago;
+    public Guerrero guerrero;
+    public Princesa princesa;
     public Corazon corazon;
     public Bomba bomba;
     public JLabel[][] matrizG;
@@ -49,6 +42,8 @@ public class Tablero {
         matrizG= new JLabel[tam][tam];
         //1 persona, o casiilas vacias       
         mago= new Mago();
+        guerrero= new Guerrero();
+        princesa= new Princesa();
         //mago.posicion=0;
         for (int i = 0; i < tam; i++) {
             for (int j = 0; j < tam; j++) {
@@ -56,25 +51,40 @@ public class Tablero {
          
             }
         }
-        agregarVidas();
+        
         agregarBombas();
+        agregarVidas();
+        agregarPersonajes();
         repintar();
     }
     public void repintar(){
         JLabel casilla= null;
         
-        int cantVida= (int)(0.05*tam*tam);
         for (int i = 0; i < tam; i++) {
             for (int j = 0; j < tam; j++) {
                 if (matrizL[i][j]==0){
                     casilla= new JLabel();
-                }else if(matrizL[i][j]==2){                  
+                }
+                else if(matrizL[i][j]==1){                  
                     casilla= new JLabel(this.corazon.Corazon(tambx, tambx));
-                }else if(matrizL[i][j]==3){
+                }else if(matrizL[i][j]==2){
                     casilla= new JLabel(this.bomba.Bomba(tambx, tamby));
                 }
-                else if(matrizL[i][j]==1){
+                else if(matrizL[i][j]==3){
                     casilla= new JLabel(this.mago.EquipoRojoM(tambx,tamby));
+                }
+                else if(matrizL[i][j]==4){
+                    casilla= new JLabel(this.mago.EquipoAzulM(tambx,tamby));
+                }
+                else if(matrizL[i][j]==5){
+                    casilla= new JLabel(this.guerrero.EquipoRojoG(tambx,tamby));
+                }
+                else if(matrizL[i][j]==6){
+                    casilla= new JLabel(this.guerrero.EquipoAzulG(tambx,tamby));
+                }else if(matrizL[i][j]==7){
+                    casilla= new JLabel(this.princesa.EquipoRojoPR(tambx,tamby));
+                }else if(matrizL[i][j]==8){
+                    casilla= new JLabel(this.princesa.EquipoAzulPR(tambx,tamby));
                 }
                 casilla.setOpaque(false);
                 casilla.setBorder(BorderFactory.createLineBorder(new Color(0,43,113)));
@@ -86,12 +96,61 @@ public class Tablero {
             
         }
     }
+    public void agregarPersonajes(){//pares para personaje 1, impares para personaje 2
+        //solo para p1
+        if("Mago".equals(Vista.P1J1.getText())){
+          matrizL[rndx()][rndy()]= 4;
+      }else if("Princesa".equals(Vista.P1J1.getText())){
+          matrizL[rndx()][rndy()]= 8;
+      }else if("Guerrero".equals(Vista.P1J1.getText())){
+          matrizL[rndx()][rndy()]= 6;
+      }
+      //solo para p2
+      if("Mago".equals(Vista.P2J1.getText())){
+          matrizL[rndx()][rndy()]= 4;
+      }else if("Princesa".equals(Vista.P2J1.getText())){
+          matrizL[rndx()][rndy()]= 8;
+      }else if("Guerrero".equals(Vista.P2J1.getText())){
+          matrizL[rndx()][rndy()]= 6;
+      }//solo para p3
+       if("Mago".equals(Vista.P3J1.getText())){
+          matrizL[rndx()][rndy()]= 4;
+      }else if("Princesa".equals(Vista.P3J1.getText())){
+          matrizL[rndx()][rndy()]= 8;
+      }else if("Guerrero".equals(Vista.P3J1.getText())){
+          matrizL[rndx()][rndy()]= 6;
+      }
+       //para J2
+        //solo para p1
+        if("Mago".equals(Vista.P1J2.getText())){
+          matrizL[rndx()][rndy()]= 3;
+      }else if("Princesa".equals(Vista.P1J2.getText())){
+          matrizL[rndx()][rndy()]= 7;
+      }else if("Guerrero".equals(Vista.P1J2.getText())){
+          matrizL[rndx()][rndy()]= 5;
+      }
+      //solo para p2
+      if("Mago".equals(Vista.P2J2.getText())){
+          matrizL[rndx()][rndy()]= 3;
+      }else if("Princesa".equals(Vista.P2J2.getText())){
+          matrizL[rndx()][rndy()]= 7;
+      }else if("Guerrero".equals(Vista.P2J2.getText())){
+          matrizL[rndx()][rndy()]= 5;
+      }//solo para p3
+       if("Mago".equals(Vista.P3J2.getText())){
+          matrizL[rndx()][rndy()]= 3;
+      }else if("Princesa".equals(Vista.P3J2.getText())){
+          matrizL[rndx()][rndy()]= 7;
+      }else if("Guerrero".equals(Vista.P3J2.getText())){
+          matrizL[rndx()][rndy()]= 5;
+      }
+    }
     public void agregarVidas(){
         int cantVida= (int)(0.05*tam*tam);
         corazon= new Corazon();
         cantVidas= new int[cantVida];
                 for (int k = 0; k < cantVida; k++) {
-            matrizL[rndx()][rndy()]=2;
+            matrizL[rndx()][rndy()]=1;
            
         }
     }
@@ -99,8 +158,9 @@ public class Tablero {
         int cantBomba= (int)(0.1*tam*tam);
         cantBombas= new int[cantBomba];
             bomba= new Bomba();
-        for (int i = 0; i < cantBomba; i++) {
-            matrizL[rndx()][rndy()]=3;
-        }
+        for (int i = 0; i < cantBomba; i++) {   
+            matrizL[rndx()][rndy()]=2;          
+            }
+            
     }
 }
