@@ -14,7 +14,6 @@ import javax.swing.ImageIcon;
  */
 public class Guerrero {
     public int posicion=0;
-    public int equipo=0;
     public ImageIcon EquipoAzulG(int tamx, int tamy){
         
        ImageIcon gueazul =new ImageIcon(getClass().getResource("/imagenes/Guerrerob.png"));
@@ -33,4 +32,5 @@ public class Guerrero {
      
        return guerojo;
     }
+
 }

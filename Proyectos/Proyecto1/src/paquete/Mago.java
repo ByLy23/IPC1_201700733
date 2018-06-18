@@ -14,7 +14,6 @@ import javax.swing.ImageIcon;
  */
 public class Mago {
     public int posicion=0;
-    public int equipo=0;
     public ImageIcon EquipoAzulM(int tamx,int tamy){
         
        ImageIcon mazul =new ImageIcon(getClass().getResource("/imagenes/Magob.png"));

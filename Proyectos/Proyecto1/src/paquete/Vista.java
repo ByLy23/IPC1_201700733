@@ -109,6 +109,11 @@ public class Vista extends javax.swing.JFrame {
         });
 
         jButton2.setText("abajo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("izquierda");
 
@@ -327,6 +332,15 @@ fondodado.removeAll();
 
 generarTablero();// TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        MovTurn1 mov1= new MovTurn1(Integer.parseInt(obtener.getText()),tab,tab.vly,tab.vlx);
+         
+        mov1.start();
+        
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
